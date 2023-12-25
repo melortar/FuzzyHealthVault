@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="digoxin_java:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/digoxin_java_jar</output-path>
+    <root id="archive" name="crane_java.jar">
+      <element id="module-output" name="crane_java" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/Ftrun.jar" path-in-jar="/" />
+      <element id="library" level="project" name="Ftrun" />
+    </root>
+  </artifact>
+</component>
