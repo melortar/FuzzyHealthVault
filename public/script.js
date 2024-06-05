@@ -54,5 +54,5 @@ async function runJavaProgram() {
 
     const result = await response.json();
 
-    document.getElementById('output').innerText = `Fuzzy model ouput: ${result.output}.`;
+    document.getElementById('output').innerText = `Recommended Dose: ${result.output}.`;
 }
