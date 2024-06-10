@@ -13,6 +13,8 @@ jobs:
       url: ${{ vars.DEPLOY_URL }}
 
     steps:
+    - uses: actions/checkout@v4
+
     - name: Deploy
       uses: appleboy/ssh-action@v1.0.3
       with:
