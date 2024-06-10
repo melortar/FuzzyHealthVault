@@ -1,29 +1,9 @@
 version: '2'
 
 services:
-  digoxin-base-v1:
-    image: digoxin-base-v1
-    container_name: digoxin-base-v1
-    build:
-      context: .
-      dockerfile_inline: |
-        FROM node:20.10.0-bullseye
-        RUN wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.deb \
-            && dpkg -i jdk-21_linux-x64_bin.deb \
-            && java --version
-
   digoxin:
-    image: digoxin
+    build: .
     container_name: digoxin
     restart: always
-    build:
-      context: .
-      dockerfile_inline: |
-        FROM digoxin-base-v1
-        WORKDIR /app
-        COPY . .
-        CMD node server.js
     ports:
       - "127.0.0.1:8081:8080"
-    depends_on:
-      - digoxin-base-v1

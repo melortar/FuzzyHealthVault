@@ -23,4 +23,5 @@ jobs:
         script: |
           cd FuzzyHealthVault
           git pull
+          docker build -t digoxin-base-v1 -f Dockerfile-base .
           docker compose up -d --build
