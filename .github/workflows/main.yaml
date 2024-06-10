@@ -1,0 +1,27 @@
+name: FuzzyHealthVault
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: Production
+      url: ${{ vars.DEPLOY_URL }}
+
+    steps:
+    - name: Deploy
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_KEY }}
+        port: ${{ secrets.SSH_PORT }}
+        script: |
+          cd FuzzyHealthVault
+          git pull
+          docker build -t digoxin-base-v1 -f Dockerfile-base .
+          docker compose up -d --build
