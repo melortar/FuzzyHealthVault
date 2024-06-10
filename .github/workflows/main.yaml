@@ -13,8 +13,6 @@ jobs:
       url: ${{ vars.DEPLOY_URL }}
 
     steps:
-    - uses: actions/checkout@v4
-
     - name: Deploy
       uses: appleboy/ssh-action@v1.0.3
       with:
@@ -22,4 +20,7 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_KEY }}
         port: ${{ secrets.SSH_PORT }}
-        script: docker compose up -d --build
+        script: |
+          cd FuzzyHealthVault
+          git pull
+          docker compose up -d --build
